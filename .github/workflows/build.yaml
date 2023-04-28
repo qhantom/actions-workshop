@@ -29,10 +29,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        if: steps.cache-dist.outputs.cache-hit != 'true'
-        run: pnpm build
-
       - name: Cache dist folder
         id: cache-dist
         uses: actions/cache@v3
@@ -41,6 +37,11 @@ jobs:
         with:
           path: dist
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('pnpm-lock.yaml') }}
+          
+      - name: Run build
+        if: steps.cache-dist.outputs.cache-hit != 'true'
+        run: pnpm build
+
         
       - name: Upload dist artifact
         uses: actions/upload-artifact@v2
