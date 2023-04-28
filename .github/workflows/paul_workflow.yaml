@@ -26,3 +26,20 @@ jobs:
 
       - name: feedback
         run: echo $feedback
+  
+  create-artifact: 
+    name: "Create Artifact"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Create Artifact File
+        run: echo $feedback >> artifact.txt
+      
+      - name: store artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact
+          path: artifact.txt
