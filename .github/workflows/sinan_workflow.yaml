@@ -22,18 +22,6 @@ jobs:
       - name: Print
         run: echo $MOIN
 
-  npm-install:
-    name: istall packages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: npm install
-        run: npm i
-
   save-greeting:
     name: Save moin
     runs-on: ubuntu-latest
