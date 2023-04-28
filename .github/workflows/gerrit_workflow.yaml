@@ -1,0 +1,22 @@
+name: Workshop
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+env:
+  GREETING: "Hello there"
+
+jobs:
+  print-greeting:
+    name: Print greeting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      
+      - name: Print
+        run: echo $GREETING
