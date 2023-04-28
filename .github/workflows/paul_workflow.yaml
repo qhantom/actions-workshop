@@ -32,14 +32,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Create Artifact File
         run: echo $feedback >> artifact.txt
       
       - name: store artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: artifact
           path: artifact.txt
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'amazoncoretto'
+      - run: cd backend
+      - name: Maven-Build
+        run: mvn package
+      - name: store jar file
+        uses: actions/upload-artifact@v3
+        with:
+          name: backend-jar
+          path: target/actions-workshop-backend.jar
