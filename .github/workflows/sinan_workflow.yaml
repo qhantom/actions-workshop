@@ -1,0 +1,23 @@
+name: JaMoin
+on:
+  push:
+    branches:
+      - main
+      - sinanium
+  pull_request: {}
+
+env:
+  MOIN: 'Ja moin'
+
+jobs:
+  print-greeting:
+    name: Print Sinans greeting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Print
+        run: echo $MOIN
