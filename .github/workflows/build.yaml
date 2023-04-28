@@ -42,3 +42,9 @@ jobs:
           path: dist
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('pnpm-lock.yaml') }}
         
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: dist
+          path: dist
