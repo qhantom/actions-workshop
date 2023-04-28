@@ -53,11 +53,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-      - run: cd backend
       - name: Maven-Build
+        working-directory: ./backend
         run: mvn package
       - name: store jar file
         uses: actions/upload-artifact@v3
         with:
           name: backend-jar
-          path: target/actions-workshop-backend.jar
+          path: backend/target/actions-workshop-backend.jar
