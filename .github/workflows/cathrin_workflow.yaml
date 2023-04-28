@@ -23,20 +23,20 @@ jobs:
       - name: Print
         run: echo $GREETING
 
-  save-greeting: 
+  save-greeting:
     name: Save greeting
     runs-on: ubuntu latest
-    steps: 
+    steps:
       - name: Checkout repo
         uses: actions/checkout@v2
         with:
-          fetch-depth: 0:       
+          fetch-depth: 0
 
-      - name: Save to file 
+      - name: Save to file
         run: echo $GREETING > greeting.txt
 
       - name: Store artifact
         uses: acions/upload-artifact@v2
-        with: 
+        with:
           name: greeting
-          path: greeting.txt  
+          path: greeting.txt
