@@ -52,7 +52,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
-          distribution: 'amazoncoretto'
+          distribution: 'temurin'
       - run: cd backend
       - name: Maven-Build
         run: mvn package
