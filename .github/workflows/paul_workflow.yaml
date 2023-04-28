@@ -1,0 +1,28 @@
+---
+name: Workshop
+
+on:
+  push:
+    branches:
+      - main
+      - paul
+  pull_request: {}
+
+env: 
+  feedback: "Thank you. Great Workshop!"
+
+jobs:
+  echo:
+    name: "echo"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout
+        with:
+          fetch-depth: 0
+
+      - name: echo Hello World
+        run: echo "Hello World"
+
+      - name: feedback
+        run: echo $feedback
